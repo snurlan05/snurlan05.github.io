@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CertCard from "../components/CertCard.astro";
+import { certifications } from "../data/certifications";
+---
+
+<BaseLayout
+  title="Certifications — Samgar Nurlan"
+  description="Microsoft certifications held by Samgar Nurlan: Azure Fundamentals (AZ-900) and Azure AI Fundamentals (AI-900)."
+  journey={false}
+  anchorPrefix="/"
+>
+  <main id="main-content">
+    <section class="plain-section cert-page" aria-labelledby="certifications-heading">
+      <div class="plain-content">
+        <div class="content-copy">
+          <h1 id="certifications-heading" tabindex="-1">Certifications.</h1>
+          <p class="section-summary">
+            Microsoft fundamentals certifications, earned in June 2026
+            alongside my software engineering studies at the University of
+            Waterloo.
+          </p>
+        </div>
+        <div class="cert-grid">
+          {certifications.map((cert) => <CertCard cert={cert} />)}
+        </div>
+        <p class="cert-note">
+          Credential IDs are not published here. Verification details are
+          available on request.
+        </p>
+        <p>
+          <a class="text-link" href="/#overview">← Back to portfolio</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

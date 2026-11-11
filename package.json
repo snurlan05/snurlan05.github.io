@@ -1,0 +1,15 @@
+{
+  "name": "snurlan05.github.io",
+  "version": "1.0.0",
+  "description": "Samgar Nurlan — software engineering portfolio (Astro source)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^5.18.2"
+  }
+}
