@@ -1,0 +1,6 @@
+---
+// Footer, copied verbatim from the live built page (index.html, 2026-10-05).
+interface Props { anchorPrefix?: string; }
+const { anchorPrefix = "" } = Astro.props;
+---
+<footer class="site-footer"><p>Samgar Nurlan</p><div><p>An artistic neural landscape, with connections as a navigation metaphor.</p><p><a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener noreferrer">BodyParts3D</a>, © The Database Center for Life Science licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC Attribution 4.0 International</a>. Brain geometry modified for this experience.</p></div><a href={anchorPrefix + "#overview"} class="back-to-top" aria-label="Back to overview"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></footer>

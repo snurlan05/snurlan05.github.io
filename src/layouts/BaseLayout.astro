@@ -1,0 +1,79 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  // Homepage loads the brain-journey script; other pages (e.g. /certifications) do not.
+  journey?: boolean;
+  anchorPrefix?: string;
+}
+const {
+  title = "Samgar Nurlan — Portfolio",
+  description = "Samgar Nurlan, software engineering student at the University of Waterloo. Explore his experience, projects, and technical skills.",
+  journey = true,
+  anchorPrefix = "",
+} = Astro.props;
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" data-view="simple" data-scene="poster">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      // Normalize a saved transition link before the browser's fragment jump.
+      if (location.hash === "#entry")
+        history.replaceState(history.state, "", "#overview");
+    </script>
+    <meta name="theme-color" content="#030914" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/sora-variable.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/source-sans-3-variable.woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a
+      class="skip-link"
+      href={journey ? "#experience-healthcare" : "#certifications-heading"}
+    >
+      {journey ? "Skip to experience" : "Skip to certifications"}
+    </a>
+    <SiteHeader anchorPrefix={anchorPrefix} />
+    <slot />
+    <SiteFooter anchorPrefix={anchorPrefix} />
+    {
+      journey && (
+        <>
+          <div class="journey-status" aria-hidden="true">
+            <span id="journey-label">A connected perspective</span>
+            <span id="journey-progress" />
+          </div>
+          <p id="scene-status" class="scene-status" role="status" aria-live="polite" hidden />
+        </>
+      )
+    }
+    {
+      /* NOTE: the journey script is NOT loaded here. Astro hoists <script>
+      tags out of conditional expressions, so a conditional script in this
+      layout would load on every page. Pages that need it (index.astro)
+      include the script themselves; /certifications does not. */
+    }
+  </body>
+</html>
