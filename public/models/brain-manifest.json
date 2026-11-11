@@ -52,10 +52,15 @@
       0,
       -0.75
     ],
-    "ProjectHealthcare": [
-      0.65,
-      -0.1,
-      0.65
+    "ProjectUncrania": [
+      0.6,
+      -0.25,
+      -0.7
+    ],
+    "ProjectBreezability": [
+      -0.55,
+      -0.45,
+      -0.55
     ]
   },
   "shellNodes": [
@@ -70,7 +75,8 @@
     "NeuralCluster_ExperienceTeaching",
     "NeuralCluster_ProjectFormulation",
     "NeuralCluster_ProjectPayguard",
-    "NeuralCluster_ProjectHealthcare",
+    "NeuralCluster_ProjectUncrania",
+    "NeuralCluster_ProjectBreezability",
     "AssociationFibers"
   ],
   "entryCorridor": {

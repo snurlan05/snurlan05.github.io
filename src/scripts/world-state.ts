@@ -32,7 +32,8 @@ export const regionTargets: [number, number, number][] = [
   [-0.65, 0.7, -0.5], // 2 ExperienceTeaching
   [0.7, 0.45, -0.85], // 3 ProjectFormulation
   [-0.78, 0, -0.75], // 4 ProjectPayguard
-  [0.65, -0.1, 0.65], // 5 ProjectHealthcare (unused by the chapters below)
+  [0.6, -0.25, -0.7], // 5 ProjectUncrania
+  [-0.55, -0.45, -0.55], // 6 ProjectBreezability
 ];
 
 export const chapters: Chapter[] = [
@@ -93,9 +94,33 @@ export const chapters: Chapter[] = [
     region: 4,
   },
   {
+    id: "project-uncrania",
+    label: "Projects / UNCrania",
+    position: [-0.05, 0.12, -0.55],
+    target: [0.6, -0.25, -0.7],
+    shell: 0,
+    region: 5,
+  },
+  {
+    id: "project-breezability",
+    label: "Projects / Breezability",
+    position: [0.1, 0.05, -0.85],
+    target: [-0.55, -0.45, -0.55],
+    shell: 0,
+    region: 6,
+  },
+  {
     id: "skills",
     label: "Skills / Connected disciplines",
     position: [0, 0.3, 5.4],
+    target: [0, 0.08, 0],
+    shell: 0.55,
+    region: -1,
+  },
+  {
+    id: "certifications",
+    label: "Certifications / Azure fundamentals",
+    position: [0, 0.5, 4.6],
     target: [0, 0.08, 0],
     shell: 0.55,
     region: -1,
@@ -178,13 +203,14 @@ export function scrollState(
 /**
  * Scroll offset (px from the top of the document) that shows `chapterId`.
  * In cinematic view the chapter is shown after its travel distance;
- * in simple view it is shown 92px above its top (under the fixed header).
+ * in simple view it is shown 120px above its top — the fixed header is
+ * 96px tall (124px on small screens), so the heading lands fully below it.
  */
 export function topForChapter(
   measures: SectionMeasure[],
   chapterId: string,
   cinematic: boolean,
-  simpleOffset = 92,
+  simpleOffset = 120,
 ): number {
   const measure = measures.find((m) => m.id === chapterId);
   return measure
